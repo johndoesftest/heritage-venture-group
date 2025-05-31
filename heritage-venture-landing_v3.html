@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heritage Venture Group</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" xintegrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* Reset and Basic Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%; 
+            overflow: hidden; 
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #2B3A42; 
+            color: #FFFFFF; 
+            display: flex;
+            flex-direction: column;
+        }
+
+        main {
+            flex-grow: 1; 
+            display: flex; 
+            flex-direction: column;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px; 
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 1.5rem; 
+            padding-right: 1.5rem; 
+        }
+
+        /* Navigation */
+        .navbar {
+            background-color: #2B3A42; 
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06); 
+            position: relative; 
+            overflow: hidden; 
+            top: 0;
+            z-index: 50;
+            flex-shrink: 0; 
+        }
+        .navbar-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 0.75rem; 
+            padding-bottom: 0.75rem; 
+            position: relative; 
+            z-index: 2;
+        }
+        .navbar-logo-link {
+            display: flex;
+            align-items: center;
+        }
+        .navbar-logo-img {
+            height: 3rem; 
+            width: auto;
+        }
+        .header-phone {
+            color: #D1D5DB; 
+            font-size: 0.9rem;
+            display: flex; 
+            align-items: center;
+            padding: 0.4rem 0.8rem; 
+            border-radius: 0.375rem; 
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer; 
+        }
+        .header-phone i {
+            color: #D4B483; 
+            margin-right: 0.5rem; 
+            font-size: 0.9em; 
+            transition: color 0.3s ease;
+        }
+        .header-phone:hover {
+            background-color: #D4B483; 
+            color: #2B3A42; 
+            transform: scale(1.05); 
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+        .header-phone:hover i {
+            color: #2B3A42; 
+        }
+
+
+        /* Decorative Lines */
+        .decorative-line {
+            position: absolute;
+            background-color: rgba(212, 180, 131, 1); 
+            height: 1px;
+            z-index: 1; 
+            animation: subtleShine 6s infinite ease-in-out;
+        }
+        @keyframes subtleShine { /* Renamed from previous subtleShine for lines */
+            0%, 100% { opacity: 0.20; } /* Reduced base opacity */
+            50% { opacity: 0.40; } /* Reduced peak opacity */
+        }
+        .navbar .decorative-line-1 {
+            width: 100px; 
+            transform: rotate(-35deg);
+            top: 8px;    
+            left: -45px; 
+            animation-delay: 0s;  
+        }
+        .navbar .decorative-line-2 { 
+            width: 100px;
+            transform: rotate(20deg);
+            bottom: 5px;
+            right: -15px; 
+            animation-delay: 1s;
+        }
+         .navbar .decorative-line-3 {
+            width: 70px;  
+            transform: rotate(30deg); 
+            top: 15px;    
+            left: 65%;
+            animation-delay: 2s;    
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #FFFFFF;
+            flex-grow: 1; 
+            padding: 1rem 0; 
+        }
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(43, 58, 66, 0.65); 
+            z-index: 1;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-content { 
+            position: relative; 
+            overflow: hidden; 
+            z-index: 2;
+            background: rgba(43, 58, 66, 0.25); 
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px); 
+            border-radius: 1rem; 
+            padding: 2rem 2.5rem; 
+            border: 1px solid rgba(255, 255, 255, 0.2); 
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2); 
+            max-width: 52rem; 
+            margin: 1rem auto; 
+            opacity: 0; 
+            animation: fadeInUp 0.7s 0.2s ease-out forwards; 
+            transition: box-shadow 0.4s ease-out; 
+        }
+        .hero-content:hover {
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2), 0 0 25px 7px rgba(212, 180, 131, 0.25); 
+        }
+
+
+        /* Shine Effect for Glassy Box - Angled Line */
+        .hero-content::before {
+            content: '';
+            position: absolute;
+            top: 50%; 
+            left: var(--mouse-x, -200%); 
+            width: 35px; /* Slightly narrower shine line */
+            height: 200%; 
+            background: linear-gradient(
+                to bottom, 
+                rgba(255, 255, 255, 0) 0%,
+                rgba(255, 255, 255, 0.02) 20%, /* Softer gradient start */
+                rgba(255, 255, 255, 0.20) 50%, /* Less intense center */
+                rgba(255, 255, 255, 0.02) 80%, /* Softer gradient end */
+                rgba(255, 255, 255, 0) 100%
+            );
+            border-radius: 18px; /* Slightly adjusted radius */
+            transform: translate(-50%, -50%) rotate(-20deg); 
+            opacity: var(--shine-opacity, 0); 
+            transition: opacity 0.3s ease-out; 
+            pointer-events: none; 
+            z-index: 3; 
+        }
+
+
+        .hero-heading {
+            font-size: 2.25rem; 
+            font-weight: 700; 
+            color: #D4B483; 
+            margin-bottom: 1.5rem; 
+            line-height: 1.2; 
+            position: relative; z-index: 4; 
+        }
+        .hero-heading .highlight-white {
+            color: #FFFFFF; 
+        }
+        .hero-paragraph {
+            font-size: 1.125rem; 
+            color: #FFFFFF; 
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); 
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 1.5rem; 
+            line-height: 1.625; 
+            text-align: justify; 
+            position: relative; z-index: 4; 
+        }
+        .hero-separator {
+            border: 0;
+            height: 1px;
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0));
+            border-style: dashed; 
+            border-top: 1px dashed rgba(255, 255, 255, 0.5); 
+            margin: 1.5rem auto; 
+            width: 80%;
+            position: relative; z-index: 4; 
+        }
+        .hero-contact-details {
+            margin-top: 1.5rem; 
+            font-size: 1rem;
+            line-height: 1.6; 
+            color: #FFFFFF; 
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4); 
+            display: flex;
+            flex-direction: column;
+            align-items: center; 
+            position: relative; z-index: 4; 
+        }
+        .hero-contact-details p {
+            margin-bottom: 0.7rem; 
+            display: flex; 
+            align-items: flex-start; 
+            text-align: left; 
+            transition: transform 0.2s ease-out; 
+        }
+        .hero-contact-details p:not(:has(a)):hover { 
+            transform: translateY(-2px);
+        }
+        .hero-contact-details i {
+            color: #D4B483; 
+            margin-right: 0.85rem; 
+            font-size: 1.1em; 
+            width: 1.2em; 
+            text-align: center; 
+            margin-top: 0.1em; 
+            flex-shrink: 0; 
+            text-shadow: none; 
+            transition: color 0.3s ease; 
+        }
+        .hero-contact-details a {
+            color: #D4B483; 
+            text-decoration: none;
+            display: inline-flex; 
+            align-items: center;
+            text-shadow: none; 
+            padding: 0.4rem 0.8rem; 
+            border-radius: 0.375rem; 
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        .hero-contact-details a:hover {
+            color: #2B3A42; 
+            background-color: #D4B483; 
+            transform: scale(1.05);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+        .hero-contact-details a:hover i {
+            color: #2B3A42; 
+        }
+         .hero-contact-details .address-block { 
+            display: inline; 
+        }
+
+
+        /* Footer */
+        .footer {
+            background-color: #2B3A42; 
+            border-top: 2px solid #D4B483; 
+            padding-top: 1.5rem; 
+            padding-bottom: 1.5rem; 
+            text-align: center;
+            flex-shrink: 0; 
+            position: relative; 
+            overflow: hidden; 
+        }
+         .footer-content-wrapper { 
+            position: relative;
+            z-index: 2;
+        }
+        .footer .decorative-line-1 {
+            width: 120px;
+            transform: rotate(40deg);
+            bottom: 15px;
+            left: 5%;
+            animation-delay: 0.5s;
+        }
+        .footer .decorative-line-2 {
+            width: 90px;
+            transform: rotate(-25deg);
+            top: 10px;
+            right: 10%;
+            animation-delay: 1.5s;
+        }
+
+        .footer-copyright {
+            font-size: 0.75rem; 
+            color: #9CA3AF; 
+        }
+
+        /* Responsive Styles */
+        @media (min-width: 768px) { /* md breakpoint */
+            .navbar-logo-img {
+                height: 3.5rem; 
+            }
+            .header-phone {
+                font-size: 1rem;
+            }
+            .header-phone i {
+                font-size: 1em;
+            }
+            .hero-heading {
+                font-size: 3rem; 
+            }
+            .hero-paragraph {
+                font-size: 1.25rem; 
+            }
+            .hero-contact-details {
+                font-size: 1.1rem;
+            }
+            .hero-content {
+                 padding: 2.5rem 3rem;
+            }
+        }
+         @media (min-width: 640px) { /* sm breakpoint */
+            .hero-heading {
+                font-size: 2.6rem; 
+            }
+             .hero-paragraph {
+                font-size: 1.18rem; 
+            }
+        }
+    </style>
+</head>
+<body> 
+    <nav class="navbar">
+        <div class="decorative-line decorative-line-1"></div>
+        <div class="decorative-line decorative-line-2"></div>
+        <div class="decorative-line decorative-line-3"></div>
+        <div class="container navbar-container">
+            <a href="#" class="navbar-logo-link">
+                <img src="https://i.ibb.co/nqJjy289/logo-original-light.png" alt="Heritage Venture Group Logo" class="navbar-logo-img">
+            </a>
+            <div class="header-phone">
+                <i class="fas fa-phone-alt"></i>
+                <span>(555) 123-4567</span>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <header 
+            class="hero-section" 
+            style="background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab');"
+            aria-labelledby="hero-heading"
+        >
+            <div class="hero-overlay"></div>
+            <div class="hero-content"> 
+                <h1 id="hero-heading" class="hero-heading">
+                    Building <span class="highlight-white">Enduring</span> Value
+                </h1>
+                <p class="hero-paragraph">
+                    Heritage Venture Group is a private investment firm committed to generating strong, consistent returns through disciplined investments in real estate, energy, and essential services. With a long-term perspective and a focus on enduring value, the firm invests in assets that combine financial performance with real-world impact.
+                </p>
+                <hr class="hero-separator">
+                <div class="hero-contact-details">
+                    <p><i class="fas fa-map-marker-alt"></i><span class="address-block">Your Street Address, Suite 000, City, State, ZIP Code</span></p>
+                    <p><a href="http://www.yourwebsite.com" target="_blank"><i class="fas fa-globe"></i>www.yourwebsite.com</a></p>
+                </div>
+            </div>
+        </header>
+    </main>
+
+    <footer class="footer">
+        <div class="decorative-line decorative-line-1"></div>
+        <div class="decorative-line decorative-line-2"></div>
+        <div class="container footer-content-wrapper">
+            <p class="footer-copyright">
+                &copy; 2025 Heritage Venture Group. All Rights Reserved.
+            </p>
+        </div>
+    </footer>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function() {
+            const heroContent = $('.hero-content');
+            const maxShineOpacity = 0.45; // Reduced max opacity for a subtler effect
+
+            heroContent.on('mousemove', function(e) {
+                const rect = this.getBoundingClientRect();
+                const x = e.clientX - rect.left; 
+                const boxWidth = rect.width;
+                const centerX = boxWidth / 2;
+                
+                const distanceFromCenter = Math.abs(x - centerX);
+                // Make the fade-out quicker by adjusting the divisor (e.g., centerX * 0.75 instead of 0.85)
+                const normalizedDistance = Math.min(1, distanceFromCenter / (centerX * 0.75) ); 
+                
+                let shineOpacity = Math.max(0, (1 - normalizedDistance) * maxShineOpacity);
+                
+                this.style.setProperty('--mouse-x', x + 'px');
+                this.style.setProperty('--shine-opacity', shineOpacity);
+            });
+
+            heroContent.on('mouseenter', function() {
+                // Initial opacity calculation on enter could be done here if needed,
+                // but mousemove usually fires immediately.
+            });
+
+            heroContent.on('mouseleave', function() {
+                this.style.setProperty('--shine-opacity', 0);
+            });
+        });
+    </script>
+
+</body>
+</html>
